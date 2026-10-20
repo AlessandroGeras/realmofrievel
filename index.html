@@ -3,105 +3,239 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Realm Of Rievel - Privacy Policy</title>
+<title>Realm Of Rievel - Tactical RPG for Android</title>
+<meta name="description" content="A turn-based tactics game for mobile, made by a solo indie developer. Flank, outsmart and finish with an epic Final Blow. Join the early test!">
+
+<!-- Previa do link no LinkedIn / WhatsApp / Discord (precisa de endereco ABSOLUTO) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogeras.github.io/realmofrievel/">
+<meta property="og:title" content="Realm Of Rievel - Tactical RPG for Android">
+<meta property="og:description" content="Turn-based tactics on your phone. Flank, outsmart and finish with an epic Final Blow. Join the early test!">
+<meta property="og:image" content="https://alessandrogeras.github.io/realmofrievel/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#16110c; --card:#211913; --text:#f1e6d2; --muted:#c9b896; --gold:#e0b04a; }
-  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 Georgia, "Times New Roman", serif; }
-  main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
-  h1 { color:var(--gold); font-size:30px; margin:0 0 4px; }
-  h2 { color:var(--gold); font-size:21px; margin:32px 0 8px; border-bottom:1px solid #4a3a22; padding-bottom:4px; }
-  .data { color:var(--muted); font-size:14px; }
-  nav a, a { color:var(--gold); }
-  nav { margin:16px 0 8px; }
-  section { background:var(--card); border:1px solid #4a3a22; border-radius:10px; padding:8px 20px 20px; margin-top:24px; }
-  li { margin:4px 0; }
+  :root {
+    --bg:#16110c; --bg2:#1d1610; --card:#241b14; --line:#4a3a22;
+    --text:#f1e6d2; --muted:#c9b896; --gold:#e0b04a; --gold2:#f5d27a;
+    --discord:#5865f2;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 Georgia, "Times New Roman", serif; }
+  a { color:var(--gold); }
+  img, video { max-width:100%; display:block; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 16px; }
+
+  /* topo */
+  .lang { position:absolute; top:12px; right:12px; z-index:2; display:flex; gap:6px; }
+  .lang button { font:700 13px/1 Georgia, serif; letter-spacing:.05em; padding:8px 12px; border-radius:6px;
+    border:1px solid var(--gold); background:rgba(22,17,12,.8); color:var(--gold); cursor:pointer; }
+  .lang button[aria-pressed="true"] { background:var(--gold); color:#1a130c; }
+
+  .hero { position:relative; background:#0d0a07; border-bottom:1px solid var(--line); }
+  .hero img { width:100%; max-height:78vh; object-fit:cover; object-position:center 40%; }
+  .hero .shade { position:absolute; inset:auto 0 0 0; height:45%;
+    background:linear-gradient(to bottom, rgba(22,17,12,0), var(--bg)); }
+  .intro { text-align:center; padding:8px 0 24px; margin-top:-56px; position:relative; }
+  .tag { font-family:Cinzel, Georgia, serif; font-weight:900; color:var(--gold2); font-size:clamp(24px, 4.4vw, 40px);
+    line-height:1.2; margin:0 0 10px; text-shadow:0 2px 0 #000; }
+  .sub { color:var(--muted); max-width:640px; margin:0 auto 22px; }
+  .ctas { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+  .btn { display:inline-block; text-decoration:none; font:700 16px/1 Georgia, serif; letter-spacing:.04em;
+    padding:15px 22px; border-radius:8px; border:2px solid var(--gold); color:var(--gold); background:var(--card); }
+  .btn.discord { background:var(--discord); border-color:var(--discord); color:#fff; }
+  .btn:hover { filter:brightness(1.12); }
+
+  section { padding:36px 0; }
+  h2 { font-family:Cinzel, Georgia, serif; color:var(--gold); font-size:clamp(22px, 3.4vw, 30px); text-align:center; margin:0 0 20px; }
+  .video { border:2px solid var(--line); border-radius:12px; overflow:hidden; background:#000; }
+  .video video { width:100%; }
+
+  .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 18px 14px; }
+  .card h3 { margin:0 0 6px; color:var(--gold2); font-size:18px; }
+  .card p { margin:0; color:var(--muted); font-size:16px; }
+
+  .heroes .card { display:flex; flex-direction:column; }
+  .cost { align-self:flex-start; font:700 12px/1 Georgia, serif; letter-spacing:.08em; color:#1a130c; background:var(--gold);
+    border-radius:4px; padding:5px 7px; margin-bottom:8px; }
+
+  .shots { display:grid; gap:12px; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); }
+  .shots img { border-radius:10px; border:1px solid var(--line); width:100%; aspect-ratio:16/9; object-fit:cover; }
+
+  .join { background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  ol.steps { max-width:640px; margin:0 auto 22px; padding-left:22px; }
+  ol.steps li { margin:8px 0; }
+  .note { text-align:center; color:var(--muted); font-size:15px; margin-top:14px; }
+
+  footer { text-align:center; color:var(--muted); font-size:14px; padding:28px 16px 40px; }
+  footer a { margin:0 6px; }
+
+  [data-pt] { display:none; }
+  html[lang="pt"] [data-en] { display:none; }
+  html[lang="pt"] [data-pt] { display:revert; }
 </style>
 </head>
 <body>
+
+<header class="hero">
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">EN</button>
+    <button type="button" data-set="pt" aria-pressed="false">PT</button>
+  </div>
+  <img src="capa.jpg" alt="Realm Of Rievel - Annie the elf archer, Alex the warrior and Gus the dwarf cleric">
+  <div class="shade"></div>
+</header>
+
 <main>
-  <h1>Realm Of Rievel</h1>
-  <div class="data">Privacy Policy / Política de Privacidade - effective October 16, 2026 / vigente a partir de 16 de outubro de 2026</div>
-  <nav><a href="#en">English</a> · <a href="#pt">Português</a></nav>
+  <div class="wrap intro">
+    <p class="tag">
+      <span data-en>Turn-based tactics, right in your pocket</span>
+      <span data-pt>Tática por turnos, no seu bolso</span>
+    </p>
+    <p class="sub">
+      <span data-en>Build your squad, read the battlefield, strike from the flank and finish with an epic <b>Final Blow</b>. A tactical RPG for Android, made by a solo indie developer from Brazil.</span>
+      <span data-pt>Monte seu esquadrão, leia o campo de batalha, ataque pelo flanco e termine com um <b>Final Blow</b> épico. Um RPG tático para Android, feito por um desenvolvedor indie solo do Brasil.</span>
+    </p>
+    <div class="ctas">
+      <a class="btn" href="#trailer"><span data-en>Watch the trailer</span><span data-pt>Ver o trailer</span></a>
+      <a class="btn discord" href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener"><span data-en>Join our Discord</span><span data-pt>Entre no nosso Discord</span></a>
+    </div>
+  </div>
 
-  <section id="en">
-    <h2>Privacy Policy</h2>
-    <p>Realm Of Rievel is a tactical game developed by an independent developer based in Brazil. This policy explains what data the game uses and why.</p>
-
-    <h2>What we collect</h2>
-    <ul>
-      <li><b>Account data:</b> your username, e-mail address and password (the password is stored and protected by our account provider, PlayFab; we never see it), or, if you sign in with Google, your Google Play Games player ID and display name.</li>
-      <li><b>Game data:</b> your saved formations, chosen avatar and outfits, account level and progress.</li>
-      <li><b>Technical data:</b> information needed to connect you to matches, such as your IP address and device type, handled by our service providers.</li>
-    </ul>
-
-    <h2>How we use it</h2>
-    <ul>
-      <li>To create and sign in to your account and keep your progress across devices.</li>
-      <li>To show your player name, avatar and title to other players in the Lobby and in matches.</li>
-      <li>To run online matches and keep the game working and secure.</li>
-    </ul>
-    <p>We do <b>not</b> sell your data and we do <b>not</b> use it for advertising. The game currently has no ads and no purchases. If that changes, this policy will be updated before it happens.</p>
-
-    <h2>Service providers</h2>
-    <ul>
-      <li><b>PlayFab</b> (Microsoft) - accounts and saved game data. <a href="https://privacy.microsoft.com/privacystatement">Privacy statement</a></li>
-      <li><b>Photon</b> (Exit Games) - online multiplayer connection. <a href="https://www.photonengine.com/privacy">Privacy policy</a></li>
-      <li><b>Google Play Games Services</b> (Google) - optional sign-in with Google. <a href="https://policies.google.com/privacy">Privacy policy</a></li>
-      <li><b>Unity</b> - the game engine, which may collect basic device and crash information. <a href="https://unity.com/legal/privacy-policy">Privacy policy</a></li>
-    </ul>
-
-    <h2>Children</h2>
-    <p>The game is family friendly, but it is not directed at children under 13 and we do not knowingly collect their data. There is no free-text chat in the game. If you believe a child has created an account, contact us and we will delete it.</p>
-
-    <h2>Your rights and account deletion</h2>
-    <p>You can ask to see, correct or delete your data at any time, including deleting your whole account, by writing to <a href="mailto:realmofrievel@gmail.com">realmofrievel@gmail.com</a>. We answer within 30 days. Brazilian users have the rights granted by the LGPD (Law 13.709/2018).</p>
-
-    <h2>Changes</h2>
-    <p>If this policy changes, the new version will be published on this page with a new date.</p>
-
-    <h2>Contact</h2>
-    <p><a href="mailto:realmofrievel@gmail.com">realmofrievel@gmail.com</a></p>
+  <section id="trailer">
+    <div class="wrap">
+      <h2>Trailer</h2>
+      <div class="video">
+        <video controls playsinline preload="metadata" poster="og.jpg">
+          <source src="trailer.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
   </section>
 
-  <section id="pt">
-    <h2>Política de Privacidade</h2>
-    <p>Realm Of Rievel é um jogo tático desenvolvido por um desenvolvedor independente no Brasil. Esta política explica quais dados o jogo usa e por quê.</p>
+  <section>
+    <div class="wrap">
+      <h2><span data-en>What makes it different</span><span data-pt>O que ele tem de especial</span></h2>
+      <div class="grid">
+        <div class="card">
+          <h3><span data-en>Position is everything</span><span data-pt>Posição é tudo</span></h3>
+          <p><span data-en>Every unit faces a direction. Hit from the side to break their guard, get behind them for a sure hit... and watch your own back.</span>
+             <span data-pt>Toda unidade olha para um lado. Ataque de lado para quebrar a guarda, chegue pelas costas para um acerto garantido... e cuide das suas.</span></p>
+        </div>
+        <div class="card">
+          <h3><span data-en>Classic d20 combat</span><span data-pt>Combate clássico de d20</span></h3>
+          <p><span data-en>Roll against armor, land critical hits, punish enemies who run away. Before each attack, you see your exact chance to hit.</span>
+             <span data-pt>Role contra a armadura, acerte críticos, puna quem foge. Antes de cada ataque, você vê sua chance exata de acertar.</span></p>
+        </div>
+        <div class="card">
+          <h3><span data-en>Epic Final Blow</span><span data-pt>Final Blow épico</span></h3>
+          <p><span data-en>The hit that wins the match turns into a cinematic for the hero who landed it.</span>
+             <span data-pt>O golpe que vence a partida vira uma cena cinematográfica do herói que o desferiu.</span></p>
+        </div>
+        <div class="card">
+          <h3><span data-en>Free to play. Never pay-to-win.</span><span data-pt>Grátis. Nunca pay-to-win.</span></h3>
+          <p><span data-en>Only cosmetics, ever. Victory comes from your tactics, not your wallet.</span>
+             <span data-pt>Só cosméticos, sempre. A vitória vem da sua tática, não da sua carteira.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>O que coletamos</h2>
-    <ul>
-      <li><b>Dados da conta:</b> nome de usuário, e-mail e senha (a senha é guardada e protegida pelo nosso provedor de contas, o PlayFab; nós nunca a vemos) ou, se você entrar com o Google, o seu ID de jogador do Google Play Games e o seu nome de exibição.</li>
-      <li><b>Dados do jogo:</b> formações salvas, avatar e roupas escolhidos, nível da conta e progresso.</li>
-      <li><b>Dados técnicos:</b> informações necessárias para conectar você às partidas, como endereço IP e tipo de aparelho, tratadas pelos nossos prestadores de serviço.</li>
-    </ul>
+  <section class="heroes">
+    <div class="wrap">
+      <h2><span data-en>Meet the heroes</span><span data-pt>Conheça os heróis</span></h2>
+      <div class="grid">
+        <div class="card">
+          <span class="cost">COST 1</span>
+          <h3>Alex</h3>
+          <p><span data-en>Human warrior. Sword, shield and a stubborn refusal to fall.</span>
+             <span data-pt>Guerreiro humano. Espada, escudo e uma teimosia enorme em não cair.</span></p>
+        </div>
+        <div class="card">
+          <span class="cost">COST 1</span>
+          <h3>Annie</h3>
+          <p><span data-en>Elf archer. Deadly from afar... just don't let anyone get too close.</span>
+             <span data-pt>Elfa arqueira. Mortal de longe... só não deixe ninguém chegar perto.</span></p>
+        </div>
+        <div class="card">
+          <span class="cost">COST 2</span>
+          <h3>Gus</h3>
+          <p><span data-en>Dwarf cleric. Heals the team and calls down lightning when needed.</span>
+             <span data-pt>Anão clérigo. Cura o time e chama um raio quando precisa.</span></p>
+        </div>
+        <div class="card">
+          <span class="cost">COST 3</span>
+          <h3>Bjorn</h3>
+          <p><span data-en>Barbarian of the volcanic lands. Burns whoever hits him and strikes back with a Spin Slash.</span>
+             <span data-pt>Bárbaro das terras vulcânicas. Queima quem bate nele e revida com um Spin Slash.</span></p>
+        </div>
+      </div>
+      <p class="note"><span data-en>More than 20 heroes are planned. Every hero has a cost: build your squad within your tactical points.</span>
+        <span data-pt>Mais de 20 heróis estão planejados. Cada herói tem um custo: monte o esquadrão dentro dos seus pontos táticos.</span></p>
+    </div>
+  </section>
 
-    <h2>Como usamos</h2>
-    <ul>
-      <li>Para criar a sua conta, fazer o login e manter o seu progresso entre aparelhos.</li>
-      <li>Para mostrar o seu nome, avatar e título aos outros jogadores no Lobby e nas partidas.</li>
-      <li>Para fazer as partidas online funcionarem com segurança.</li>
-    </ul>
-    <p><b>Não</b> vendemos os seus dados e <b>não</b> os usamos para publicidade. Hoje o jogo não tem anúncios nem compras. Se isso mudar, esta política será atualizada antes.</p>
+  <section>
+    <div class="wrap">
+      <h2><span data-en>Screenshots</span><span data-pt>Imagens do jogo</span></h2>
+      <div class="shots">
+        <img src="shot-ataque.jpg" alt="Battle on an isometric board" loading="lazy">
+        <img src="shot-retirada.jpg" alt="A defeated hero retreats with a farewell line" loading="lazy">
+        <img src="shot-warroom.jpg" alt="War Room: building a formation" loading="lazy">
+        <img src="shot-finalblow.jpg" alt="Final Blow cinematic of Annie" loading="lazy">
+      </div>
+    </div>
+  </section>
 
-    <h2>Prestadores de serviço</h2>
-    <ul>
-      <li><b>PlayFab</b> (Microsoft) - contas e dados salvos do jogo. <a href="https://privacy.microsoft.com/pt-br/privacystatement">Política de privacidade</a></li>
-      <li><b>Photon</b> (Exit Games) - conexão do multiplayer online. <a href="https://www.photonengine.com/privacy">Política de privacidade</a></li>
-      <li><b>Google Play Games Services</b> (Google) - entrada opcional com o Google. <a href="https://policies.google.com/privacy?hl=pt-BR">Política de privacidade</a></li>
-      <li><b>Unity</b> - o motor do jogo, que pode coletar informações básicas do aparelho e de falhas. <a href="https://unity.com/legal/privacy-policy">Política de privacidade</a></li>
-    </ul>
-
-    <h2>Crianças</h2>
-    <p>O jogo é para toda a família, mas não é direcionado a menores de 13 anos e não coletamos dados deles de propósito. Não existe chat de texto livre no jogo. Se você acredita que uma criança criou uma conta, fale com a gente e ela será excluída.</p>
-
-    <h2>Seus direitos e exclusão da conta</h2>
-    <p>Você pode pedir a qualquer momento para ver, corrigir ou excluir os seus dados, inclusive a conta inteira, escrevendo para <a href="mailto:realmofrievel@gmail.com">realmofrievel@gmail.com</a>. Respondemos em até 30 dias. Usuários no Brasil têm os direitos garantidos pela LGPD (Lei 13.709/2018).</p>
-
-    <h2>Mudanças</h2>
-    <p>Se esta política mudar, a nova versão será publicada nesta página com a nova data.</p>
-
-    <h2>Contato</h2>
-    <p><a href="mailto:realmofrievel@gmail.com">realmofrievel@gmail.com</a></p>
+  <section class="join" id="tester">
+    <div class="wrap">
+      <h2><span data-en>Become an early tester</span><span data-pt>Seja um testador</span></h2>
+      <ol class="steps">
+        <li><span data-en>Join our <a href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener">Discord</a>.</span>
+            <span data-pt>Entre no nosso <a href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener">Discord</a>.</span></li>
+        <li><span data-en>Send the developer the Gmail address you use on your Android phone.</span>
+            <span data-pt>Mande para o desenvolvedor o Gmail que você usa no seu celular Android.</span></li>
+        <li><span data-en>You'll get the test link on Google Play. Play, break things and tell us what you think!</span>
+            <span data-pt>Você recebe o link do teste no Google Play. Jogue, quebre coisas e diga o que achou!</span></li>
+      </ol>
+      <div class="ctas">
+        <a class="btn discord" href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener"><span data-en>Join our Discord</span><span data-pt>Entre no nosso Discord</span></a>
+      </div>
+      <p class="note"><span data-en>Testers who join now keep the legendary <b>EARLY TESTER</b> title, forever. It will never be sold.</span>
+        <span data-pt>Quem entra agora fica com o título lendário <b>EARLY TESTER</b> para sempre. Ele nunca será vendido.</span></p>
+    </div>
   </section>
 </main>
+
+<footer>
+  <span data-en>Available in English, Portuguese, Spanish and Indonesian.</span>
+  <span data-pt>Disponível em inglês, português, espanhol e indonésio.</span>
+  <br>
+  <a href="privacy/"><span data-en>Privacy Policy</span><span data-pt>Política de Privacidade</span></a>
+  <a href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener">Discord</a>
+  <br>&copy; 2026 Realm Of Rievel
+</footer>
+
+<script>
+  (function () {
+    var btns = document.querySelectorAll('.lang button');
+    function set(l) {
+      document.documentElement.lang = l;
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.set === l ? 'true' : 'false'); });
+      try { localStorage.setItem('ror-lang', l); } catch (e) {}
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.set); }); });
+    var saved = null;
+    try { saved = localStorage.getItem('ror-lang'); } catch (e) {}
+    set(saved || ((navigator.language || '').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en'));
+  })();
+</script>
 </body>
 </html>
