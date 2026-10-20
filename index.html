@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Realm Of Rievel - Tactical RPG for Android</title>
-<meta name="description" content="A turn-based tactics game for mobile, made by a solo indie developer. 20+ heroes and 11 game modes planned. Flank, outsmart and finish with an epic Final Blow. Join the early test!">
+<title>Realm Of Rievel - Free Tactical RPG for Android</title>
+<meta name="description" content="A free turn-based tactics game for mobile, made by a solo indie developer. 20+ heroes and 11 game modes planned. Flank, outsmart and finish with an epic Final Blow. Join the early test!">
 
 <!-- Previa do link no LinkedIn / WhatsApp / Discord (precisa de endereco ABSOLUTO) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alessandrogeras.github.io/realmofrievel/">
-<meta property="og:title" content="Realm Of Rievel - Tactical RPG for Android">
-<meta property="og:description" content="Turn-based tactics on your phone. 20+ heroes and 11 game modes planned. Flank, outsmart and finish with an epic Final Blow. Join the early test!">
+<meta property="og:title" content="Realm Of Rievel - Free Tactical RPG for Android">
+<meta property="og:description" content="Free turn-based tactics on your phone. 20+ heroes and 11 game modes planned. Flank, outsmart and finish with an epic Final Blow. Join the early test!">
 <meta property="og:image" content="https://alessandrogeras.github.io/realmofrievel/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
@@ -86,6 +86,13 @@
   .mode.secret { border-style:dashed; background:transparent; }
   .mode.secret h3 { font-family:Cinzel, Georgia, serif; font-size:30px; color:var(--line); letter-spacing:.1em; }
 
+  /* novidades: espelho do WHAT'S NEW do jogo (mesmos 5 itens, mesma versao) */
+  .news { max-width:760px; margin:0 auto; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 22px; }
+  .ver { text-align:center; color:var(--muted); font-size:14px; margin:-8px 0 14px; }
+  .news ul { margin:0; padding-left:20px; }
+  .news li { margin:8px 0; }
+  .news li b { color:var(--gold2); }
+
   .shots { display:grid; gap:12px; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); }
   .shots img { border-radius:10px; border:1px solid var(--line); width:100%; aspect-ratio:16/9; object-fit:cover; }
 
@@ -116,12 +123,12 @@
 <main>
   <div class="wrap intro">
     <p class="tag">
-      <span data-en>Turn-based tactics, right in your pocket</span>
-      <span data-pt>Tática por turnos, no seu bolso</span>
+      <span data-en>Turn-based tactics in the palm of your hand</span>
+      <span data-pt>Tática por turnos na palma da sua mão</span>
     </p>
     <p class="sub">
-      <span data-en>Build your squad, read the battlefield, strike from the flank and finish with an epic <b>Final Blow</b>. A tactical RPG for Android, made by a solo indie developer from Brazil.</span>
-      <span data-pt>Monte seu esquadrão, leia o campo de batalha, ataque pelo flanco e termine com um <b>Final Blow</b> épico. Um RPG tático para Android, feito por um desenvolvedor indie solo do Brasil.</span>
+      <span data-en>Build your squad, read the battlefield, strike from the flank and finish with an epic <b>Final Blow</b>. A <b>free</b> tactical RPG for Android, made by a solo indie developer from Brazil.</span>
+      <span data-pt>Monte seu esquadrão, leia o campo de batalha, ataque pelo flanco e termine com um <b>Final Blow</b> épico. Um RPG tático <b>gratuito</b> para Android, feito por um desenvolvedor indie solo do Brasil.</span>
     </p>
     <div class="ctas">
       <a class="btn" href="#trailer"><span data-en>Watch the trailer</span><span data-pt>Ver o trailer</span></a>
@@ -151,6 +158,28 @@
         <video controls playsinline preload="metadata" poster="og.jpg">
           <source src="trailer.mp4" type="video/mp4">
         </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVIDADES: manter IGUAL ao WHAT'S NEW do jogo (Resources/ConfiguracaoNovidades.asset) -->
+  <section id="news">
+    <div class="wrap">
+      <h2><span data-en>What's new</span><span data-pt>Novidades</span></h2>
+      <p class="ver"><span data-en>Test build v20 - October 2026</span><span data-pt>Versão de teste v20 - outubro de 2026</span></p>
+      <div class="news">
+        <ul>
+          <li><span data-en><b>HIT CHANCE:</b> before each attack, see your exact chance to hit and the damage - flank to raise it!</span>
+              <span data-pt><b>HIT CHANCE:</b> antes de cada ataque, veja sua chance exata de acertar e o dano - ataque pelo flanco para aumentá-la!</span></li>
+          <li><span data-en><b>ACHIEVEMENTS:</b> 15 collectible titles from Common to Legendary - unlock them in battle and show them off in the Lobby.</span>
+              <span data-pt><b>ACHIEVEMENTS:</b> 15 títulos colecionáveis do Comum ao Lendário - conquiste nas batalhas e exiba no Lobby.</span></li>
+          <li><span data-en><b>New hero: Bjorn</b>, the barbarian of the volcanic lands - costs 3 points, fights alone and strikes back with Spin Slash while defending.</span>
+              <span data-pt><b>Novo herói: Bjorn</b>, o bárbaro das terras vulcânicas - custa 3 pontos, luta sozinho e revida com o Spin Slash quando está em guarda.</span></li>
+          <li><span data-en><b>Thank you, testers!</b> Everyone playing now gets the EARLY TESTER title - it will never be sold.</span>
+              <span data-pt><b>Obrigado, testadores!</b> Quem joga agora ganha o título EARLY TESTER - ele nunca será vendido.</span></li>
+          <li><span data-en><b>FINAL BLOW:</b> every hero ends the match with an epic cinematic.</span>
+              <span data-pt><b>FINAL BLOW:</b> todo herói encerra a partida com uma cinemática épica.</span></li>
+        </ul>
       </div>
     </div>
   </section>
