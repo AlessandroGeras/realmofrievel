@@ -94,7 +94,18 @@
   .news li b { color:var(--gold2); }
 
   .shots { display:grid; gap:12px; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); }
-  .shots img { border-radius:10px; border:1px solid var(--line); width:100%; aspect-ratio:16/9; object-fit:cover; }
+  .shots img { border-radius:10px; border:1px solid var(--line); width:100%; aspect-ratio:16/9; object-fit:cover; cursor:zoom-in; transition:transform .15s; }
+  .shots img:hover { transform:scale(1.02); }
+
+  /* imagem ampliada (clique na galeria) */
+  .zoom { position:fixed; inset:0; z-index:50; background:rgba(8,6,4,.94); display:none; align-items:center; justify-content:center; cursor:zoom-out; }
+  .zoom.on { display:flex; }
+  .zoom img { max-width:96vw; max-height:92vh; border-radius:8px; border:1px solid var(--line); box-shadow:0 10px 40px #000; }
+  .zoom button { position:absolute; background:rgba(36,27,20,.85); color:var(--gold); border:1px solid var(--gold); border-radius:50%;
+    width:48px; height:48px; font:700 26px/1 Georgia, serif; cursor:pointer; }
+  .zoom .x { top:14px; right:14px; }
+  .zoom .prev { left:12px; top:50%; transform:translateY(-50%); }
+  .zoom .next { right:12px; top:50%; transform:translateY(-50%); }
 
   .join { background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   ol.steps { max-width:640px; margin:0 auto 22px; padding-left:22px; }
@@ -104,9 +115,9 @@
   footer { text-align:center; color:var(--muted); font-size:14px; padding:28px 16px 40px; }
   footer a { margin:0 6px; }
 
-  [data-pt] { display:none; }
-  html[lang="pt"] [data-en] { display:none; }
-  html[lang="pt"] [data-pt] { display:revert; }
+  [data-pt], [data-es], [data-id] { display:none; }
+  html:not([lang="en"]) [data-en] { display:none; }
+  html[lang="pt"] [data-pt], html[lang="es"] [data-es], html[lang="id"] [data-id] { display:revert; }
 </style>
 </head>
 <body>
@@ -115,6 +126,8 @@
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-set="en" aria-pressed="true">EN</button>
     <button type="button" data-set="pt" aria-pressed="false">PT</button>
+    <button type="button" data-set="es" aria-pressed="false">ES</button>
+    <button type="button" data-set="id" aria-pressed="false">ID</button>
   </div>
   <img src="capa.jpg" alt="Realm Of Rievel - Annie the elf archer, Alex the warrior and Gus the dwarf cleric">
   <div class="shade"></div>
@@ -124,30 +137,30 @@
   <div class="wrap intro">
     <p class="tag">
       <span data-en>Turn-based tactics in the palm of your hand</span>
-      <span data-pt>Tática por turnos na palma da sua mão</span>
+      <span data-pt>Tática por turnos na palma da sua mão</span><span data-es>Táctica por turnos en la palma de tu mano</span><span data-id>Taktik berbasis giliran di genggamanmu</span>
     </p>
     <p class="sub">
       <span data-en>Build your squad, read the battlefield, strike from the flank and finish with an epic <b>Final Blow</b>. A <b>free</b> tactical RPG for Android, made by a solo indie developer from Brazil.</span>
-      <span data-pt>Monte seu esquadrão, leia o campo de batalha, ataque pelo flanco e termine com um <b>Final Blow</b> épico. Um RPG tático <b>gratuito</b> para Android, feito por um desenvolvedor indie solo do Brasil.</span>
+      <span data-pt>Monte seu esquadrão, leia o campo de batalha, ataque pelo flanco e termine com um <b>Final Blow</b> épico. Um RPG tático <b>gratuito</b> para Android, feito por um desenvolvedor indie solo do Brasil.</span><span data-es>Arma tu escuadrón, lee el campo de batalla, ataca por el flanco y termina con un <b>Final Blow</b> épico. Un RPG táctico <b>gratuito</b> para Android, hecho por un desarrollador indie solo de Brasil.</span><span data-id>Bentuk regumu, baca medan perang, serang dari samping, dan akhiri dengan <b>Final Blow</b> yang epik. RPG taktik <b>gratis</b> untuk Android, dibuat oleh satu developer indie dari Brasil.</span>
     </p>
     <div class="ctas">
-      <a class="btn" href="#tester"><span data-en>Play the beta</span><span data-pt>Jogue o beta</span></a>
-      <a class="btn" href="#trailer"><span data-en>Watch the trailer</span><span data-pt>Ver o trailer</span></a>
-      <a class="btn discord" href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener"><span data-en>Join our Discord</span><span data-pt>Entre no nosso Discord</span></a>
+      <a class="btn" href="#tester"><span data-en>Play the beta</span><span data-pt>Jogue o beta</span><span data-es>Juega la beta</span><span data-id>Main versi beta</span></a>
+      <a class="btn" href="#trailer"><span data-en>Watch the trailer</span><span data-pt>Ver o trailer</span><span data-es>Ver el tráiler</span><span data-id>Tonton trailer</span></a>
+      <a class="btn discord" href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener"><span data-en>Join our Discord</span><span data-pt>Entre no nosso Discord</span><span data-es>Únete a nuestro Discord</span><span data-id>Gabung Discord kami</span></a>
     </div>
 
     <div class="stats">
       <div class="stat">
         <div class="num">6 <small>/ 20+</small></div>
-        <span class="lbl"><span data-en>HEROES</span><span data-pt>HERÓIS</span></span>
+        <span class="lbl"><span data-en>HEROES</span><span data-pt>HERÓIS</span><span data-es>HÉROES</span><span data-id>PAHLAWAN</span></span>
         <p><span data-en>Each one plays differently, and more join every update.</span>
-           <span data-pt>Cada um joga de um jeito, e mais chegam a cada atualização.</span></p>
+           <span data-pt>Cada um joga de um jeito, e mais chegam a cada atualização.</span><span data-es>Cada uno juega a su manera, y llegan más en cada actualización.</span><span data-id>Masing-masing punya gaya main sendiri, dan pahlawan baru datang di setiap update.</span></p>
       </div>
       <div class="stat">
         <div class="num">5 <small>/ 13</small></div>
-        <span class="lbl"><span data-en>GAME MODES</span><span data-pt>MODOS DE JOGO</span></span>
+        <span class="lbl"><span data-en>GAME MODES</span><span data-pt>MODOS DE JOGO</span><span data-es>MODOS DE JUEGO</span><span data-id>MODE PERMAINAN</span></span>
         <p><span data-en>13 different ways to battle are planned. Five are already here: Skirmish, Random Clash, Last Stand, the Daily Puzzle and Pass &amp; Play.</span>
-           <span data-pt>13 jeitos diferentes de batalhar estão planejados. Cinco já estão aqui: Skirmish, Random Clash, Last Stand, o Daily Puzzle e o Pass &amp; Play.</span></p>
+           <span data-pt>13 jeitos diferentes de batalhar estão planejados. Cinco já estão aqui: Skirmish, Random Clash, Last Stand, o Daily Puzzle e o Pass &amp; Play.</span><span data-es>Hay 13 formas distintas de combatir planeadas. Cinco ya están aquí: Skirmish, Random Clash, Last Stand, el Daily Puzzle y el Pass &amp; Play.</span><span data-id>13 cara bertarung sudah direncanakan. Lima sudah tersedia: Skirmish, Random Clash, Last Stand, Daily Puzzle, dan Pass &amp; Play.</span></p>
       </div>
     </div>
   </div>
@@ -166,47 +179,47 @@
   <!-- NOVIDADES: manter IGUAL ao WHAT'S NEW do jogo (Resources/ConfiguracaoNovidades.asset) -->
   <section id="news">
     <div class="wrap">
-      <h2><span data-en>What's new</span><span data-pt>Novidades</span></h2>
-      <p class="ver"><span data-en>Test build v31 - November 2026</span><span data-pt>Versão de teste v31 - novembro de 2026</span></p>
+      <h2><span data-en>What's new</span><span data-pt>Novidades</span><span data-es>Novedades</span><span data-id>Yang baru</span></h2>
+      <p class="ver"><span data-en>Test build v31 - November 2026</span><span data-pt>Versão de teste v31 - novembro de 2026</span><span data-es>Versión de prueba v31 - noviembre de 2026</span><span data-id>Versi uji v31 - November 2026</span></p>
       <div class="news">
         <ul>
           <li><span data-en><b>New hero: Lyra</b>, the fire summoner - teleports instead of walking, fights alongside Pyro, her little fire elemental, and swaps places with him in a fiery burst.</span>
-              <span data-pt><b>Nova heroína: Lyra</b>, a invocadora de fogo - se teleporta em vez de andar, luta ao lado do Pyro, o seu elementalzinho de fogo, e troca de lugar com ele numa explosão de chamas.</span></li>
+              <span data-pt><b>Nova heroína: Lyra</b>, a invocadora de fogo - se teleporta em vez de andar, luta ao lado do Pyro, o seu elementalzinho de fogo, e troca de lugar com ele numa explosão de chamas.</span><span data-es><b>Nueva heroína: Lyra</b>, la invocadora de fuego - se teletransporta en lugar de caminar, lucha junto a Pyro, su pequeño elemental de fuego, y cambia de lugar con él en una explosión de llamas.</span><span data-id><b>Pahlawan baru: Lyra</b>, sang pemanggil api - berteleportasi alih-alih berjalan, bertarung bersama Pyro, elemental api kecilnya, dan bertukar tempat dengannya dalam ledakan api.</span></li>
           <li><span data-en><b>DAILY PUZZLE:</b> a new tactical challenge every day - now much tougher, with EASY, MEDIUM and HARD days - and every Sunday, an <b>AHA!</b> puzzle with a hidden trick. Keep your streak!</span>
-              <span data-pt><b>DAILY PUZZLE:</b> um desafio tático novo por dia - agora bem mais difícil, com dias EASY, MEDIUM e HARD - e todo domingo, um puzzle <b>AHA!</b> com um truque escondido. Mantenha a sua sequência!</span></li>
+              <span data-pt><b>DAILY PUZZLE:</b> um desafio tático novo por dia - agora bem mais difícil, com dias EASY, MEDIUM e HARD - e todo domingo, um puzzle <b>AHA!</b> com um truque escondido. Mantenha a sua sequência!</span><span data-es><b>DAILY PUZZLE:</b> un nuevo desafío táctico cada día - ahora mucho más difícil, con días EASY, MEDIUM y HARD - y cada domingo, un puzzle <b>AHA!</b> con un truco escondido. ¡Mantén tu racha!</span><span data-id><b>DAILY PUZZLE:</b> tantangan taktik baru setiap hari - sekarang jauh lebih sulit, dengan hari EASY, MEDIUM, dan HARD - dan setiap Minggu, puzzle <b>AHA!</b> dengan trik tersembunyi. Jaga terus streak-mu!</span></li>
           <li><span data-en><b>New hero: Lee</b>, the martial artist - strikes twice (punch + kick), slips past enemy lines and halves a hit with Uncanny Dodge.</span>
-              <span data-pt><b>Novo herói: Lee</b>, o artista marcial - bate duas vezes (soco + chute), atravessa a linha inimiga e corta um golpe pela metade com a Uncanny Dodge.</span></li>
+              <span data-pt><b>Novo herói: Lee</b>, o artista marcial - bate duas vezes (soco + chute), atravessa a linha inimiga e corta um golpe pela metade com a Uncanny Dodge.</span><span data-es><b>Nuevo héroe: Lee</b>, el artista marcial - golpea dos veces (puñetazo + patada), cruza la línea enemiga y reduce un golpe a la mitad con Uncanny Dodge.</span><span data-id><b>Pahlawan baru: Lee</b>, sang ahli bela diri - menyerang dua kali (pukulan + tendangan), menembus barisan musuh, dan memotong separuh serangan dengan Uncanny Dodge.</span></li>
           <li><span data-en><b>NEW MODE - PASS &amp; PLAY:</b> two players, one phone. Each one builds a squad - challenge a friend sitting next to you!</span>
-              <span data-pt><b>MODO NOVO - PASS &amp; PLAY:</b> dois jogadores, um celular. Cada um monta o seu esquadrão - desafie quem está do seu lado!</span></li>
+              <span data-pt><b>MODO NOVO - PASS &amp; PLAY:</b> dois jogadores, um celular. Cada um monta o seu esquadrão - desafie quem está do seu lado!</span><span data-es><b>MODO NUEVO - PASS &amp; PLAY:</b> dos jugadores, un teléfono. Cada uno arma su escuadrón - ¡desafía a quien está a tu lado!</span><span data-id><b>MODE BARU - PASS &amp; PLAY:</b> dua pemain, satu ponsel. Masing-masing membentuk regunya - tantang temanmu yang duduk di sebelahmu!</span></li>
           <li><span data-en><b>MVP &amp; SHARE:</b> see who carried the match and share the screenshot with your friends.</span>
-              <span data-pt><b>MVP &amp; SHARE:</b> veja quem carregou a partida e compartilhe o print com os amigos.</span></li>        </ul>
+              <span data-pt><b>MVP &amp; SHARE:</b> veja quem carregou a partida e compartilhe o print com os amigos.</span><span data-es><b>MVP &amp; SHARE:</b> mira quién cargó con la partida y comparte la captura con tus amigos.</span><span data-id><b>MVP &amp; SHARE:</b> lihat siapa yang paling berjasa di pertandingan dan bagikan tangkapan layarnya ke teman.</span></li>        </ul>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2><span data-en>What makes it different</span><span data-pt>O que ele tem de especial</span></h2>
+      <h2><span data-en>What makes it different</span><span data-pt>O que ele tem de especial</span><span data-es>Lo que lo hace especial</span><span data-id>Apa yang membuatnya istimewa</span></h2>
       <div class="grid">
         <div class="card">
-          <h3><span data-en>Position is everything</span><span data-pt>Posição é tudo</span></h3>
+          <h3><span data-en>Position is everything</span><span data-pt>Posição é tudo</span><span data-es>La posición lo es todo</span><span data-id>Posisi adalah segalanya</span></h3>
           <p><span data-en>Every unit faces a direction. Hit from the side to break their guard, get behind them for a sure hit... and watch your own back.</span>
-             <span data-pt>Toda unidade olha para um lado. Ataque de lado para quebrar a guarda, chegue pelas costas para um acerto garantido... e cuide das suas.</span></p>
+             <span data-pt>Toda unidade olha para um lado. Ataque de lado para quebrar a guarda, chegue pelas costas para um acerto garantido... e cuide das suas.</span><span data-es>Cada unidad mira hacia un lado. Ataca de costado para romper su guardia, llega por la espalda para un golpe seguro... y cuida la tuya.</span><span data-id>Setiap unit menghadap ke satu arah. Serang dari samping untuk mematahkan pertahanannya, datang dari belakang untuk serangan pasti... dan jaga punggungmu sendiri.</span></p>
         </div>
         <div class="card">
-          <h3><span data-en>Classic d20 combat</span><span data-pt>Combate clássico de d20</span></h3>
+          <h3><span data-en>Classic d20 combat</span><span data-pt>Combate clássico de d20</span><span data-es>Combate clásico de d20</span><span data-id>Pertarungan d20 klasik</span></h3>
           <p><span data-en>Roll against armor, land critical hits, punish enemies who run away. Before each attack, you see your exact chance to hit.</span>
-             <span data-pt>Role contra a armadura, acerte críticos, puna quem foge. Antes de cada ataque, você vê sua chance exata de acertar.</span></p>
+             <span data-pt>Role contra a armadura, acerte críticos, puna quem foge. Antes de cada ataque, você vê sua chance exata de acertar.</span><span data-es>Tira contra la armadura, logra críticos, castiga a quien huye. Antes de cada ataque, ves tu probabilidad exacta de acertar.</span><span data-id>Lempar dadu melawan armor, daratkan serangan kritis, hukum musuh yang kabur. Sebelum setiap serangan, kamu melihat peluang tepat untuk mengenai.</span></p>
         </div>
         <div class="card">
-          <h3><span data-en>Epic Final Blow</span><span data-pt>Final Blow épico</span></h3>
+          <h3><span data-en>Epic Final Blow</span><span data-pt>Final Blow épico</span><span data-es>Final Blow épico</span><span data-id>Final Blow yang epik</span></h3>
           <p><span data-en>The hit that wins the match turns into a cinematic for the hero who landed it.</span>
-             <span data-pt>O golpe que vence a partida vira uma cena cinematográfica do herói que o desferiu.</span></p>
+             <span data-pt>O golpe que vence a partida vira uma cena cinematográfica do herói que o desferiu.</span><span data-es>El golpe que gana la partida se convierte en una escena cinematográfica del héroe que lo dio.</span><span data-id>Serangan yang memenangkan pertandingan berubah menjadi adegan sinematik dari pahlawan yang melakukannya.</span></p>
         </div>
         <div class="card">
-          <h3><span data-en>Free to play.</span><span data-pt>Grátis para jogar.</span></h3>
+          <h3><span data-en>Free to play.</span><span data-pt>Grátis para jogar.</span><span data-es>Gratis para jugar.</span><span data-id>Gratis untuk dimainkan.</span></h3>
           <p><span data-en>Victory comes from your tactics alone.</span>
-             <span data-pt>A vitória vem só da sua tática.</span></p>
+             <span data-pt>A vitória vem só da sua tática.</span><span data-es>La victoria depende solo de tu táctica.</span><span data-id>Kemenangan hanya datang dari taktikmu.</span></p>
         </div>
       </div>
     </div>
@@ -214,37 +227,37 @@
 
   <section id="modes">
     <div class="wrap">
-      <h2><span data-en>13 game modes</span><span data-pt>13 modos de jogo</span></h2>
+      <h2><span data-en>13 game modes</span><span data-pt>13 modos de jogo</span><span data-es>13 modos de juego</span><span data-id>13 mode permainan</span></h2>
       <div class="modes">
         <div class="mode">
-          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span></span>
+          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span><span data-es>YA DISPONIBLE</span><span data-id>SUDAH TERSEDIA</span></span>
           <h3>Skirmish</h3>
           <p><span data-en>Squad against squad. Last one standing wins.</span>
-             <span data-pt>Esquadrão contra esquadrão. Vence quem ficar de pé.</span></p>
+             <span data-pt>Esquadrão contra esquadrão. Vence quem ficar de pé.</span><span data-es>Escuadrón contra escuadrón. Gana el último que quede en pie.</span><span data-id>Regu melawan regu. Yang terakhir berdiri menang.</span></p>
         </div>
         <div class="mode">
-          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span></span>
+          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span><span data-es>YA DISPONIBLE</span><span data-id>SUDAH TERSEDIA</span></span>
           <h3>Random Clash</h3>
           <p><span data-en>Both squads are drawn at random. No favorites: adapt and win with what fate gives you!</span>
-             <span data-pt>Os dois esquadrões são sorteados. Nada de favoritos: adapte-se e vença com o que o destino te deu!</span></p>
+             <span data-pt>Os dois esquadrões são sorteados. Nada de favoritos: adapte-se e vença com o que o destino te deu!</span><span data-es>Los dos escuadrones se sortean. Nada de favoritos: ¡adáptate y gana con lo que te dio el destino!</span><span data-id>Kedua regu diacak. Tidak ada favorit: beradaptasilah dan menangkan dengan apa yang diberikan takdir!</span></p>
         </div>
         <div class="mode">
-          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span></span>
+          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span><span data-es>YA DISPONIBLE</span><span data-id>SUDAH TERSEDIA</span></span>
           <h3>Last Stand</h3>
           <p><span data-en>You are the boss: double points in the middle of the board, surrounded by two enemy squads. Hold the line!</span>
-             <span data-pt>Você é o boss: o dobro de pontos no meio do tabuleiro, cercado por dois esquadrões inimigos. Segure a linha!</span></p>
+             <span data-pt>Você é o boss: o dobro de pontos no meio do tabuleiro, cercado por dois esquadrões inimigos. Segure a linha!</span><span data-es>Tú eres el jefe: el doble de puntos en el centro del tablero, rodeado por dos escuadrones enemigos. ¡Resiste!</span><span data-id>Kamu adalah bos: poin dua kali lipat di tengah papan, dikepung dua regu musuh. Bertahanlah!</span></p>
         </div>
         <div class="mode">
-          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span></span>
+          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span><span data-es>YA DISPONIBLE</span><span data-id>SUDAH TERSEDIA</span></span>
           <h3>Daily Puzzle</h3>
           <p><span data-en>One puzzle a day, the same for everyone. No dice luck: find the winning move! Sundays hide an AHA! trick.</span>
-             <span data-pt>Um puzzle por dia, igual para todos. Sem sorte nos dados: ache a jogada da vitória! Aos domingos, um truque AHA!.</span></p>
+             <span data-pt>Um puzzle por dia, igual para todos. Sem sorte nos dados: ache a jogada da vitória! Aos domingos, um truque AHA!.</span><span data-es>Un puzzle por día, igual para todos. Sin suerte en los dados: ¡encuentra la jugada ganadora! Los domingos esconden un truco AHA!.</span><span data-id>Satu puzzle setiap hari, sama untuk semua pemain. Tanpa keberuntungan dadu: temukan langkah kemenangannya! Hari Minggu menyimpan trik AHA!.</span></p>
         </div>
         <div class="mode">
-          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span></span>
+          <span class="badge now"><span data-en>PLAY NOW</span><span data-pt>JÁ DISPONÍVEL</span><span data-es>YA DISPONIBLE</span><span data-id>SUDAH TERSEDIA</span></span>
           <h3>Pass &amp; Play</h3>
           <p><span data-en>Two players, one phone. Challenge a friend sitting next to you.</span>
-             <span data-pt>Dois jogadores, um celular. Desafie quem está do seu lado.</span></p>
+             <span data-pt>Dois jogadores, um celular. Desafie quem está do seu lado.</span><span data-es>Dos jugadores, un teléfono. Desafía a quien está a tu lado.</span><span data-id>Dua pemain, satu ponsel. Tantang temanmu yang duduk di sebelahmu.</span></p>
         </div>
         <div class="mode secret"><h3>???</h3></div>
         <div class="mode secret"><h3>???</h3></div>
@@ -256,101 +269,102 @@
         <div class="mode secret"><h3>???</h3></div>
       </div>
       <p class="note"><span data-en>The other eight are a secret... for now. Follow us on Discord to see each one revealed.</span>
-        <span data-pt>Os outros oito são segredo... por enquanto. Acompanhe no Discord para ver cada um ser revelado.</span></p>
+        <span data-pt>Os outros oito são segredo... por enquanto. Acompanhe no Discord para ver cada um ser revelado.</span><span data-es>Los otros ocho son un secreto... por ahora. Síguenos en Discord para ver cómo se revela cada uno.</span><span data-id>Delapan sisanya masih rahasia... untuk saat ini. Ikuti kami di Discord untuk melihat setiap mode diungkap.</span></p>
     </div>
   </section>
 
   <section class="heroes">
     <div class="wrap">
-      <h2><span data-en>Meet the heroes</span><span data-pt>Conheça os heróis</span></h2>
+      <h2><span data-en>Meet the heroes</span><span data-pt>Conheça os heróis</span><span data-es>Conoce a los héroes</span><span data-id>Kenali para pahlawan</span></h2>
       <div class="grid">
         <div class="card">
           <span class="cost">COST 2</span>
           <h3>Alex</h3>
           <p><span data-en>Human warrior. Sword, shield and a stubborn refusal to fall.</span>
-             <span data-pt>Guerreiro humano. Espada, escudo e uma teimosia enorme em não cair.</span></p>
+             <span data-pt>Guerreiro humano. Espada, escudo e uma teimosia enorme em não cair.</span><span data-es>Guerrero humano. Espada, escudo y una terquedad enorme para no caer.</span><span data-id>Pejuang manusia. Pedang, perisai, dan tekad keras kepala untuk tidak tumbang.</span></p>
         </div>
         <div class="card">
           <span class="cost">COST 1</span>
           <h3>Annie</h3>
           <p><span data-en>Elf archer. Deadly from afar... just don't let anyone get too close.</span>
-             <span data-pt>Elfa arqueira. Mortal de longe... só não deixe ninguém chegar perto.</span></p>
+             <span data-pt>Elfa arqueira. Mortal de longe... só não deixe ninguém chegar perto.</span><span data-es>Arquera elfa. Letal de lejos... solo no dejes que nadie se acerque demasiado.</span><span data-id>Pemanah elf. Mematikan dari jauh... asal jangan biarkan siapa pun terlalu dekat.</span></p>
         </div>
         <div class="card">
           <span class="cost">COST 1</span>
           <h3>Gus</h3>
           <p><span data-en>Dwarf cleric. Strikes with lightning from afar and heals the team.</span>
-             <span data-pt>Anão clérigo. Ataca com raio de longe e cura o time.</span></p>
+             <span data-pt>Anão clérigo. Ataca com raio de longe e cura o time.</span><span data-es>Clérigo enano. Ataca con rayos desde lejos y cura al equipo.</span><span data-id>Ulama kurcaci. Menyerang dengan petir dari jauh dan menyembuhkan tim.</span></p>
         </div>
         <div class="card">
           <span class="cost">COST 3</span>
           <h3>Bjorn</h3>
           <p><span data-en>Barbarian of the volcanic lands. Burns whoever hits him and strikes back with a Spin Slash.</span>
-             <span data-pt>Bárbaro das terras vulcânicas. Queima quem bate nele e revida com um Spin Slash.</span></p>
+             <span data-pt>Bárbaro das terras vulcânicas. Queima quem bate nele e revida com um Spin Slash.</span><span data-es>Bárbaro de las tierras volcánicas. Quema a quien lo golpea y responde con un Spin Slash.</span><span data-id>Barbar dari tanah vulkanik. Membakar siapa pun yang memukulnya dan membalas dengan Spin Slash.</span></p>
         </div>
         <div class="card">
           <span class="cost">COST 2</span>
           <h3>Lee</h3>
           <p><span data-en>Martial artist. Strikes twice, slips past enemy lines and shrugs off half a hit.</span>
-             <span data-pt>Artista marcial. Bate duas vezes, atravessa a linha inimiga e corta um golpe pela metade.</span></p>
+             <span data-pt>Artista marcial. Bate duas vezes, atravessa a linha inimiga e corta um golpe pela metade.</span><span data-es>Artista marcial. Golpea dos veces, cruza la línea enemiga y reduce un golpe a la mitad.</span><span data-id>Ahli bela diri. Menyerang dua kali, menembus barisan musuh, dan memotong separuh serangan.</span></p>
         </div>
         <div class="card">
           <span class="cost">COST 3</span>
           <h3>Lyra</h3>
           <p><span data-en>Fire summoner from Lumora. Teleports, fights alongside Pyro and swaps places with him in a fiery burst.</span>
-             <span data-pt>Invocadora de fogo de Lumora. Se teleporta, luta ao lado do Pyro e troca de lugar com ele numa explosão de chamas.</span></p>
+             <span data-pt>Invocadora de fogo de Lumora. Se teleporta, luta ao lado do Pyro e troca de lugar com ele numa explosão de chamas.</span><span data-es>Invocadora de fuego de Lumora. Se teletransporta, lucha junto a Pyro y cambia de lugar con él en una explosión de llamas.</span><span data-id>Pemanggil api dari Lumora. Berteleportasi, bertarung bersama Pyro, dan bertukar tempat dengannya dalam ledakan api.</span></p>
         </div>
       </div>
       <p class="note"><span data-en>Every hero has a cost: build your squad within your tactical points.</span>
-        <span data-pt>Cada herói tem um custo: monte o esquadrão dentro dos seus pontos táticos.</span></p>
+        <span data-pt>Cada herói tem um custo: monte o esquadrão dentro dos seus pontos táticos.</span><span data-es>Cada héroe tiene un costo: arma tu escuadrón dentro de tus puntos tácticos.</span><span data-id>Setiap pahlawan punya biaya: bentuk regumu sesuai poin taktikmu.</span></p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2><span data-en>Screenshots</span><span data-pt>Imagens do jogo</span></h2>
+      <h2><span data-en>Screenshots</span><span data-pt>Imagens do jogo</span><span data-es>Imágenes del juego</span><span data-id>Tangkapan layar</span></h2>
       <div class="shots">
-        <img src="shot-1.jpg" alt="Battle: Bjorn on the isometric battlefield, with the tutorial" loading="lazy">
-        <img src="shot-2.jpg" alt="War Room: building a formation, with Annie's hero sheet" loading="lazy">
-        <img src="shot-3.jpg" alt="Lobby: game modes and tables" loading="lazy">
-        <img src="shot-4.jpg" alt="Daily Puzzle: a new tactical puzzle every day" loading="lazy">
-        <img src="shot-5.jpg" alt="A defeated hero retreats with a farewell line" loading="lazy">
-        <img src="shot-6.jpg" alt="Match Stats: the MVP of the match" loading="lazy">
-        <img src="shot-7.jpg" alt="Final Blow by Bjorn: victory screen with achievements unlocked" loading="lazy">
-        <img src="shot-8.jpg" alt="Annie the elf archer watching the sunset over the realm" loading="lazy">
+        <!-- 05/11/2026: capturas com titulo (as mesmas da loja), no idioma da pagina; clique amplia -->
+        <img data-n="1" alt="Battle: Bjorn on the isometric battlefield, with the tutorial" loading="lazy">
+        <img data-n="2" alt="War Room: building a formation, with Annie's hero sheet" loading="lazy">
+        <img data-n="3" alt="Lobby: game modes and tables" loading="lazy">
+        <img data-n="4" alt="Daily Puzzle: a new tactical puzzle every day" loading="lazy">
+        <img data-n="5" alt="A defeated hero retreats with a farewell line" loading="lazy">
+        <img data-n="6" alt="Match Stats: the MVP of the match" loading="lazy">
+        <img data-n="7" alt="Final Blow by Bjorn: victory screen with achievements unlocked" loading="lazy">
+        <img data-n="8" alt="Annie the elf archer watching the sunset over the realm" loading="lazy">
       </div>
     </div>
   </section>
 
   <section class="join" id="tester">
     <div class="wrap">
-      <h2><span data-en>Become an early tester</span><span data-pt>Seja um testador</span></h2>
+      <h2><span data-en>Become an early tester</span><span data-pt>Seja um testador</span><span data-es>Hazte tester</span><span data-id>Jadilah penguji</span></h2>
       <ol class="steps">
         <li><span data-en>Join the <a href="https://groups.google.com/g/realm-of-rievel-testers" target="_blank" rel="noopener">testers group</a> with the Google account you use on your Android phone.</span>
-            <span data-pt>Entre no <a href="https://groups.google.com/g/realm-of-rievel-testers" target="_blank" rel="noopener">grupo de testadores</a> com a conta Google que você usa no celular Android.</span></li>
+            <span data-pt>Entre no <a href="https://groups.google.com/g/realm-of-rievel-testers" target="_blank" rel="noopener">grupo de testadores</a> com a conta Google que você usa no celular Android.</span><span data-es>Únete al <a href="https://groups.google.com/g/realm-of-rievel-testers" target="_blank" rel="noopener">grupo de testers</a> con la cuenta de Google que usas en tu teléfono Android.</span><span data-id>Gabung ke <a href="https://groups.google.com/g/realm-of-rievel-testers" target="_blank" rel="noopener">grup penguji</a> dengan akun Google yang kamu pakai di ponsel Android.</span></li>
         <li><span data-en>Open the <a href="https://play.google.com/apps/testing/com.alessandrogeras.realmofrievel" target="_blank" rel="noopener">test page</a>, tap <b>Become a tester</b> and install from Google Play.</span>
-            <span data-pt>Abra a <a href="https://play.google.com/apps/testing/com.alessandrogeras.realmofrievel" target="_blank" rel="noopener">página do teste</a>, toque em <b>Tornar-se testador</b> e instale pelo Google Play.</span></li>
+            <span data-pt>Abra a <a href="https://play.google.com/apps/testing/com.alessandrogeras.realmofrievel" target="_blank" rel="noopener">página do teste</a>, toque em <b>Tornar-se testador</b> e instale pelo Google Play.</span><span data-es>Abre la <a href="https://play.google.com/apps/testing/com.alessandrogeras.realmofrievel" target="_blank" rel="noopener">página de la prueba</a>, toca <b>Convertirte en tester</b> e instala desde Google Play.</span><span data-id>Buka <a href="https://play.google.com/apps/testing/com.alessandrogeras.realmofrievel" target="_blank" rel="noopener">halaman pengujian</a>, ketuk <b>Jadi penguji</b>, lalu instal dari Google Play.</span></li>
         <li><span data-en>In the game, tap <b>REGISTER</b> to create your account with a username and password.</span>
-            <span data-pt>No jogo, toque em <b>REGISTER</b> e crie sua conta com usuário e senha.</span></li>
+            <span data-pt>No jogo, toque em <b>REGISTER</b> e crie sua conta com usuário e senha.</span><span data-es>En el juego, toca <b>REGISTER</b> y crea tu cuenta con usuario y contraseña.</span><span data-id>Di dalam game, ketuk <b>REGISTER</b> dan buat akunmu dengan nama pengguna dan kata sandi.</span></li>
         <li><span data-en>Keep the game installed for at least 14 days, play, break things and tell us what you think on <a href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener">Discord</a>!</span>
-            <span data-pt>Mantenha o jogo instalado por pelo menos 14 dias, jogue, quebre coisas e diga o que achou no <a href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener">Discord</a>!</span></li>
+            <span data-pt>Mantenha o jogo instalado por pelo menos 14 dias, jogue, quebre coisas e diga o que achou no <a href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener">Discord</a>!</span><span data-es>¡Mantén el juego instalado al menos 14 días, juega, rompe cosas y cuéntanos qué te pareció en <a href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener">Discord</a>!</span><span data-id>Biarkan game terpasang setidaknya 14 hari, mainkan, cari bug, dan ceritakan pendapatmu di <a href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener">Discord</a>!</span></li>
       </ol>
       <div class="ctas">
-        <a class="btn" href="https://groups.google.com/g/realm-of-rievel-testers" target="_blank" rel="noopener"><span data-en>1. Join the group</span><span data-pt>1. Entrar no grupo</span></a>
-        <a class="btn" href="https://play.google.com/apps/testing/com.alessandrogeras.realmofrievel" target="_blank" rel="noopener"><span data-en>2. Join the test</span><span data-pt>2. Entrar no teste</span></a>
-        <a class="btn discord" href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener"><span data-en>Join our Discord</span><span data-pt>Entre no nosso Discord</span></a>
+        <a class="btn" href="https://groups.google.com/g/realm-of-rievel-testers" target="_blank" rel="noopener"><span data-en>1. Join the group</span><span data-pt>1. Entrar no grupo</span><span data-es>1. Unirse al grupo</span><span data-id>1. Gabung grup</span></a>
+        <a class="btn" href="https://play.google.com/apps/testing/com.alessandrogeras.realmofrievel" target="_blank" rel="noopener"><span data-en>2. Join the test</span><span data-pt>2. Entrar no teste</span><span data-es>2. Unirse a la prueba</span><span data-id>2. Ikut pengujian</span></a>
+        <a class="btn discord" href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener"><span data-en>Join our Discord</span><span data-pt>Entre no nosso Discord</span><span data-es>Únete a nuestro Discord</span><span data-id>Gabung Discord kami</span></a>
       </div>
       <p class="note"><span data-en>Testers who join now keep the legendary <b>EARLY TESTER</b> title, forever.</span>
-        <span data-pt>Quem entra agora fica com o título lendário <b>EARLY TESTER</b> para sempre.</span></p>
+        <span data-pt>Quem entra agora fica com o título lendário <b>EARLY TESTER</b> para sempre.</span><span data-es>Quien entra ahora se queda con el título legendario <b>EARLY TESTER</b> para siempre.</span><span data-id>Yang bergabung sekarang mendapat gelar legendaris <b>EARLY TESTER</b> selamanya.</span></p>
     </div>
   </section>
 </main>
 
 <footer>
   <span data-en>Available in English, Portuguese, Spanish and Indonesian.</span>
-  <span data-pt>Disponível em inglês, português, espanhol e indonésio.</span>
+  <span data-pt>Disponível em inglês, português, espanhol e indonésio.</span><span data-es>Disponible en inglés, portugués, español e indonesio.</span><span data-id>Tersedia dalam bahasa Inggris, Portugis, Spanyol, dan Indonesia.</span>
   <br>
-  <a href="privacy/"><span data-en>Privacy Policy</span><span data-pt>Política de Privacidade</span></a>
+  <a href="privacy/"><span data-en>Privacy Policy</span><span data-pt>Política de Privacidade</span><span data-es>Política de privacidad</span><span data-id>Kebijakan Privasi</span></a>
   <a href="https://discord.gg/NVQCweR3V9" target="_blank" rel="noopener">Discord</a>
   <a href="https://www.instagram.com/realmofrievel" target="_blank" rel="noopener">Instagram</a>
   <a href="https://www.youtube.com/@RealmOfRievel" target="_blank" rel="noopener">YouTube</a>
@@ -358,18 +372,49 @@
   <br>&copy; 2026 Realm Of Rievel
 </footer>
 
+<div class="zoom" id="zoom" aria-hidden="true">
+  <img alt="">
+  <button class="x" aria-label="Close">&times;</button>
+  <button class="prev" aria-label="Previous">&lsaquo;</button>
+  <button class="next" aria-label="Next">&rsaquo;</button>
+</div>
+
 <script>
   (function () {
     var btns = document.querySelectorAll('.lang button');
+    var shots = Array.prototype.slice.call(document.querySelectorAll('.shots img'));
+    var zoom = document.getElementById('zoom'), zImg = zoom.querySelector('img'), atual = 0;
+    function abrir(i) {
+      atual = (i + shots.length) % shots.length;
+      zImg.src = shots[atual].src; zImg.alt = shots[atual].alt;
+      zoom.classList.add('on'); zoom.setAttribute('aria-hidden', 'false');
+    }
+    function fechar() { zoom.classList.remove('on'); zoom.setAttribute('aria-hidden', 'true'); }
+    shots.forEach(function (img, i) { img.addEventListener('click', function () { abrir(i); }); });
+    zoom.addEventListener('click', function (e) { if (e.target === zoom || e.target === zImg) fechar(); });
+    zoom.querySelector('.x').addEventListener('click', fechar);
+    zoom.querySelector('.prev').addEventListener('click', function (e) { e.stopPropagation(); abrir(atual - 1); });
+    zoom.querySelector('.next').addEventListener('click', function (e) { e.stopPropagation(); abrir(atual + 1); });
+    document.addEventListener('keydown', function (e) {
+      if (!zoom.classList.contains('on')) return;
+      if (e.key === 'Escape') fechar();
+      else if (e.key === 'ArrowLeft') abrir(atual - 1);
+      else if (e.key === 'ArrowRight') abrir(atual + 1);
+    });
     function set(l) {
       document.documentElement.lang = l;
+      shots.forEach(function (img) { img.src = 'shots-' + l + '/' + img.dataset.n + '.jpg'; });
+      if (zoom.classList.contains('on')) zImg.src = shots[atual].src;
       btns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.set === l ? 'true' : 'false'); });
       try { localStorage.setItem('ror-lang', l); } catch (e) {}
     }
     btns.forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.set); }); });
     var saved = null;
     try { saved = localStorage.getItem('ror-lang'); } catch (e) {}
-    set(saved || ((navigator.language || '').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en'));
+    var nav = (navigator.language || '').toLowerCase().slice(0, 2);
+    if (nav === 'in') nav = 'id';
+    var ok = ['en', 'pt', 'es', 'id'];
+    set(ok.indexOf(saved) >= 0 ? saved : (ok.indexOf(nav) >= 0 ? nav : 'en'));
   })();
 </script>
 </body>
